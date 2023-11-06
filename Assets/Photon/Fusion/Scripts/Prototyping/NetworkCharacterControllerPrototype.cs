@@ -2,7 +2,7 @@ using System;
 using Fusion;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(UnityEngine.CharacterController))]
 [OrderBefore(typeof(NetworkTransform))]
 [DisallowMultipleComponent]
 // ReSharper disable once CheckNamespace
@@ -35,7 +35,7 @@ public class NetworkCharacterControllerPrototype : NetworkTransform {
   /// </summary>
   protected override Vector3 DefaultTeleportInterpolationAngularVelocity => new Vector3(0f, 0f, rotationSpeed);
 
-  public CharacterController Controller { get; private set; }
+  public UnityEngine.CharacterController Controller { get; private set; }
 
   protected override void Awake() {
     base.Awake();
@@ -49,7 +49,7 @@ public class NetworkCharacterControllerPrototype : NetworkTransform {
 
   private void CacheController() {
     if (Controller == null) {
-      Controller = GetComponent<CharacterController>();
+            Controller = GetComponent<UnityEngine.CharacterController>();
 
       Assert.Check(Controller != null, $"An object with {nameof(NetworkCharacterControllerPrototype)} must also have a {nameof(CharacterController)} component.");
     }

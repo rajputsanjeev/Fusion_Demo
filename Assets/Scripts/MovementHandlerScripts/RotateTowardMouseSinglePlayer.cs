@@ -1,21 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class RotateTowardMouse : MonoBehaviour
+public class RotateTowardMouseSinglePlayer : MonoBehaviour
 {
     public float rotationSpeed = 10f;
     public float moveSpeed = 10f;
 
     public Vector3 rotationAxis = Vector3.up;
-    public bool shouldMove;
 
     // Update is called once per frame
-    protected void Move(Vector3 mousePosition)
+    public void Update()
     {
-
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         // Perform a raycast to determine the intersection point with the scene
         if (Physics.Raycast(ray, out RaycastHit hit))

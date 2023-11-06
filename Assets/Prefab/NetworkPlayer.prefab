@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 3642307359893479046}
   - component: {fileID: 3642307359893479065}
   - component: {fileID: 2372892408119521384}
+  - component: {fileID: 2428896020603512381}
+  - component: {fileID: 4188382252350566470}
   m_Layer: 0
   m_Name: NetworkPlayer
   m_TagString: Untagged
@@ -30,8 +32,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3642307359893479043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.99302, y: 33.5, z: 228.56543}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 45.5, z: 0}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -136,6 +138,9 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 3642307359893479046}
+  - {fileID: 2372892408119521384}
+  - {fileID: 2428896020603512381}
+  - {fileID: 4188382252350566470}
   SimulationBehaviours: []
 --- !u!114 &2372892408119521384
 MonoBehaviour:
@@ -149,7 +154,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f19fae348e703249b5a5754c72319d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 0}
+  InterpolateErrorCorrection: 0
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
+--- !u!114 &2428896020603512381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642307359893479043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b32fc7efede92f4bafbad62f2ae36b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   rotationSpeed: 10
-  moveSpeed: 10
+  moveSpeed: 100
   rotationAxis: {x: 0, y: 1, z: 0}
-  shouldMove: 0
+  rotatingDirection: {x: 0, y: 0, z: 0, w: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &4188382252350566470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642307359893479043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58e961b3245cb14ca682fcb0a91f166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  rotateTowardMouse: {fileID: 2372892408119521384}

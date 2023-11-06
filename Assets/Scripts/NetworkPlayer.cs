@@ -14,12 +14,11 @@ public sealed class NetworkPlayer : NetworkBehaviour,IPlayerLeft
         {
             Local = this;
             Debug.Log("Spawned local player");
+            Camera.main.transform.GetComponent<CameraFollow>().target = transform;
         }
 
         else Debug.Log("Spawned remote player");
     }
-
-
 
     public void PlayerLeft(PlayerRef player)
     {

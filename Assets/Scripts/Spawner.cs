@@ -8,6 +8,7 @@ using System;
 public class Spawner : MonoBehaviour,INetworkRunnerCallbacks
 {
     public NetworkPlayer NetworkPlayer;
+    private SendInputHandler characterInputHandler;
 
     public void OnConnectedToServer(NetworkRunner runner)
     {
@@ -35,6 +36,13 @@ public class Spawner : MonoBehaviour,INetworkRunnerCallbacks
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
+        if(characterInputHandler == null && NetworkPlayer.Local != null)
+            characterInputHandler = NetworkPlayer.Local.GetComponent<SendInputHandler>();  
+
+        if(characterInputHandler != null)
+        {
+            input.Set(characterInputHandler.GetInput());
+        }
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
@@ -45,7 +53,7 @@ public class Spawner : MonoBehaviour,INetworkRunnerCallbacks
     {
         if (runner.IsServer)
         {
-            runner.Spawn(NetworkPlayer, Vector3.zero, Quaternion.identity, player);
+            runner.Spawn(NetworkPlayer, new Vector3(0, 50f,0), Quaternion.identity, player);
         }
     }
 
