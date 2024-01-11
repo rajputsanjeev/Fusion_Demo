@@ -14,7 +14,7 @@ public class CharacterController : NetworkBehaviour
         transform.rotation = networkInputData.rotatingDirection;
 
         //Move Player Toward direct
-        transform.position = new Vector3(networkInputData.moveDirection.x, 20f, networkInputData.moveDirection.z);
+       // transform.position = new Vector3(networkInputData.moveDirection.x, 100f, networkInputData.moveDirection.z);
     }
 }
 

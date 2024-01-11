@@ -19,7 +19,7 @@ public class NetworkRunerHandler : MonoBehaviour
         networkRunner = Instantiate(networkRunnerPrefab);
         networkRunner.name = "NetworkRunner";
 
-        var serverTask = InitializeNetworkRunner(networkRunner, GameMode.AutoHostOrClient, NetAddress.Any(), 2, (runner) =>
+        var serverTask = InitializeNetworkRunner(networkRunner, GameMode.AutoHostOrClient, NetAddress.Any(), 0, (runner) =>
         {
 #if FUSION_DEV
         var name = _server.name; // closures do not capture values, need a local var to save it

@@ -58,7 +58,7 @@ public class NetworkRunnerController : NetworkRunnerControllerBase, INetworkRunn
     public async void StartGame(GameMode mode, string roomName , Dictionary<string, SessionProperty> SessionProperties = null,bool isOpen = true, bool isVisible = true)
     {
         //ProvideInput means that that player is recording and sending inputs to the server.
-        //networkRunnerInstance.ProvideInput = true;
+        networkRunnerInstance.ProvideInput = true;
 
         var startGameArgs = new StartGameArgs()
         {
@@ -67,7 +67,7 @@ public class NetworkRunnerController : NetworkRunnerControllerBase, INetworkRunn
             PlayerCount = 4,
             Address = NetAddress.Any(),
             SessionProperties = SessionProperties,
-            Scene = 1,
+            Scene = 2,
             IsOpen = isOpen,
             IsVisible = isVisible,
             SceneManager = networkRunnerInstance.GetComponent<INetworkSceneManager>()
@@ -147,9 +147,11 @@ public class NetworkRunnerController : NetworkRunnerControllerBase, INetworkRunn
         Debug.Log("OnCustomAuthenticationResponse");
     }
 
-    public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken)
+    public async void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken)
     {
-        Debug.Log("OnHostMigration");
+        await runner.Shutdown(shutdownReason: ShutdownReason.HostMigration);
+
+
     }
 
     public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ArraySegment<byte> data)

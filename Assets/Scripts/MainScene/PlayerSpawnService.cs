@@ -15,7 +15,8 @@ public class PlayerSpawnService : PhotonListnerThree<PlayerStatus,PlayerRef, Net
             case PlayerStatus.OPPONENT_JOINED:
                 if (networkRunner.IsServer)
                 {
-                    var playerObject = networkRunner.Spawn(NetworkPlayer, new Vector3(0, 50f, 0), Quaternion.identity, playerRef);
+                    Debug.Log("Spawn");
+                    var playerObject = networkRunner.Spawn(NetworkPlayer, new Vector3(Random.Range(-50,50), 100f, Random.Range(-50,50)), Quaternion.identity, playerRef);
                     networkRunner.SetPlayerObject(playerRef, playerObject);
                 }
                 break;
