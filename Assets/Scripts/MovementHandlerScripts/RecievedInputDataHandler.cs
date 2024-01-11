@@ -11,10 +11,9 @@ public class RecievedInputDataHandler : NetworkBehaviour
     {
         base.FixedUpdateNetwork();
 
-        if(GetInput(out NetworkInputData networkInputData))
+        if (GetInput(out NetworkInputData networkInputData))
         {
             rotateTowardMouse.Move(networkInputData);
         }
-
     }
 }

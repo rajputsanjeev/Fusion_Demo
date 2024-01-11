@@ -43,9 +43,9 @@ public class SendInputHandler : NetworkBehaviour
 
     public NetworkInputData GetInput()
     {
-        NetworkInputData  networkInputData = new NetworkInputData();
+        NetworkInputData networkInputData = new NetworkInputData();
         networkInputData.moveDirection = moveDirection;
         networkInputData.rotatingDirection = rotatingDirection;
-        return networkInputData;    
+        return networkInputData;
     }
 }
